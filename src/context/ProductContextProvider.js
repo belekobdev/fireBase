@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { db } from "../fire";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 
 export const productContext = createContext();
 export const useProduct = () => {
@@ -8,7 +8,7 @@ export const useProduct = () => {
 };
 
 const ProductContextProvider = ({ children }) => {
-  const productsCollectionRef = collection(db, "products");
+  const productsCollectionRef = collection(db, "movies");
   const [data, setData] = useState([]);
 
   //! addProduct
@@ -22,7 +22,6 @@ const ProductContextProvider = ({ children }) => {
   //   setData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   // }
   const values = {
-    data,
     addProduct,
   };
 
